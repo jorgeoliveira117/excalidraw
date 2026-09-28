@@ -548,14 +548,11 @@ export const getUncroppedImageElement = (
 
 export const getUncroppedWidthAndHeight = (element: ExcalidrawImageElement) => {
   if (element.crop) {
-    const width =
-      element.width / (element.crop.width / element.crop.naturalWidth);
-    const height =
-      element.height / (element.crop.height / element.crop.naturalHeight);
+    const scale = element.width / element.crop.width;
 
     return {
-      width,
-      height,
+      width: element.crop.naturalWidth * scale,
+      height: element.crop.naturalHeight * scale,
     };
   }
 
